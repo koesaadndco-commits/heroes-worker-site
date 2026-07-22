@@ -4,7 +4,7 @@
 Next.js（App Router / TypeScript）製。Vercel へのデプロイを想定しています。
 
 ## 開発
-
+ 
 ```bash
 npm install
 npm run dev      # http://localhost:3000
