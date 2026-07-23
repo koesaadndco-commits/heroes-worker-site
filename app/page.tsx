@@ -146,7 +146,7 @@ export default function Home() {
             <h2>
               全力で対応する、
               <br />
-              溶接の<span className="hl">お困り事解決</span>業。
+              溶接の<span className="hl">お困り事解決業。</span>
             </h2>
             <p>緊急対応やスピード納品など、まずはご連絡ください。</p>
             <Link href="/#contact" className="btn btn-primary" style={{ marginTop: 20 }}>
