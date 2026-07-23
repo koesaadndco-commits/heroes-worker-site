@@ -56,10 +56,8 @@ export default function Home() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img className="hero-logo" src="/logo.png" alt="Heroes Worker ロゴ" />
             <h1>
-              <span className="l1">その一手間に、</span>
-              <span className="l2">
-                <span className="hl">職人の誇り</span>を。
-              </span>
+              職人の誇りとプライドを<span className="hl">商品価値</span>へ。<br />
+              妥協しない。だから、いつも<span className="hl">最高品質</span>。
             </h1>
             <p className="lead">{site.description}</p>
             <div className="hero-actions">

@@ -35,6 +35,7 @@ export const nav = [
   { href: "/#services", label: "事業内容" },
   { href: "/#strengths", label: "強み" },
   { href: "/works", label: "施工事例" },
+  { href: "/blog", label: "ブログ" },
   { href: "/#flow", label: "ご依頼の流れ" },
   { href: "/#company", label: "会社概要" },
   { href: "/#contact", label: "お問い合わせ" },

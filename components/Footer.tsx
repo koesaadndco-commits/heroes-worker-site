@@ -22,6 +22,7 @@ export default function Footer() {
               <Link href="/#services">事業内容</Link>
               <Link href="/#strengths">強み</Link>
               <Link href="/works">施工事例</Link>
+              <Link href="/blog">ブログ</Link>
               <Link href="/#company">会社概要</Link>
             </div>
             <div className="foot-col">
