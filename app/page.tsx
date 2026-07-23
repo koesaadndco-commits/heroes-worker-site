@@ -56,7 +56,8 @@ export default function Home() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img className="hero-logo" src="/logo.png" alt="Heroes Worker ロゴ" />
             <h1>
-              職人の誇りとプライドを<span className="hl">商品価値</span>へ。<br />
+              職人の誇りとプライドを<span className="hl">商品価値</span>へ。
+              <br />
               妥協しない。だから、いつも<span className="hl">最高品質</span>。
             </h1>
             <p className="lead">{site.description}</p>
@@ -72,7 +73,9 @@ export default function Home() {
           <Reveal className="hero-portrait faded-photo">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/shimizu.png" alt={`代表 ${site.company.rep}`} />
-            <span className="hero-portrait-name">代表 清水 寛也</span>
+            <span className="hero-portrait-name">
+              代表 清水 寛也
+            </span>
           </Reveal>
         </div>
       </section>
@@ -97,6 +100,23 @@ export default function Home() {
         </div>
       </section>
 
+      {/* CRAFT (職人の誇り) */}
+      <section id="craft" className="bg-2">
+        <div className="wrap media-grid">
+          <Reveal className="media-text">
+            <span className="kicker">Craftsmanship</span>
+            <h2>職人の誇りとプライド</h2>
+            <p>
+              一つひとつの溶接に、職人としての誇りとプライドを込めています。見えない部分こそ丁寧に。お客様に安心して長くお使いいただける仕上がりをお届けします。
+            </p>
+          </Reveal>
+          <Reveal className="media-photo faded-photo">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/craft.jpg" alt="工房で作業する代表" />
+          </Reveal>
+        </div>
+      </section>
+
       {/* STRENGTHS */}
       <section id="strengths" className="bg-2">
         <div className="wrap">
@@ -114,6 +134,25 @@ export default function Home() {
               </Reveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* BANNER (atmosphere) */}
+      <section className="banner">
+        <div className="banner-overlay" />
+        <div className="wrap banner-inner">
+          <Reveal>
+            <span className="kicker">Support</span>
+            <h2>
+              全力で対応する、
+              <br />
+              溶接の<span className="hl">お困り事解決</span>業。
+            </h2>
+            <p>緊急対応やスピード納品など、まずはご連絡ください。</p>
+            <Link href="/#contact" className="btn btn-primary" style={{ marginTop: 20 }}>
+              まずは相談する →
+            </Link>
+          </Reveal>
         </div>
       </section>
 
@@ -196,16 +235,42 @@ export default function Home() {
           <Reveal>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img className="philo-logo" src="/logo.png" alt="Heroes Worker" />
-            <div className="philo-divider"><span /><i>◆</i><span /></div>
+            <div className="philo-divider">
+              <span />
+              <i>◆</i>
+              <span />
+            </div>
             <span className="philo-kicker">Philosophy</span>
             <p className="philo-sub">― 経営理念 ―</p>
             <p className="philo-creed">
-              溶接・金属加工を通じて<br />
-              関わるすべての方との<br />
-              <span className="hl">繋がり</span>を大切にし<br />
-              <span className="hl">感謝</span>の心を忘れず<br />
+              溶接・金属加工を通じて
+              <br />
+              関わるすべての方との
+              <br />
+              <span className="hl">繋がり</span>を大切にし
+              <br />
+              <span className="hl">感謝</span>の心を忘れず
+              <br />
               <span className="hl">笑顔</span>を生み出す存在へ
             </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* GREETING (代表メッセージ) */}
+      <section id="greeting">
+        <div className="wrap media-grid">
+          <Reveal className="media-photo faded-photo">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/greeting.jpg" alt="代表 清水 寛也" />
+          </Reveal>
+          <Reveal className="media-text">
+            <span className="kicker">Message</span>
+            <h2>代表メッセージ</h2>
+            <p>
+              このたびは Heroes Worker のホームページをご覧いただき、ありがとうございます。溶接・金属加工を通じて、お客様の「困った」を解決し、ご満足いただける商品をお届けすることが私たちの使命です。小さなご相談から大きな製作まで、誠心誠意対応いたします。どうぞお気軽にお声がけください。
+            </p>
+            <p className="greeting-name">代表　清水 寛也</p>
           </Reveal>
         </div>
       </section>
@@ -296,14 +361,15 @@ export default function Home() {
                 </div>
               </div>
               <a
-                className="qr-card-contact"
+                className="qr-card qr-card-contact"
                 href={site.social.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Instagram（@heroes_worker）を開く"
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/instagram-qr.svg" alt="Instagram QRコード（@heroes_worker）" />
-                <span>QRコードから<br />Instagramをフォロー</span>
+                <img src="/instagram-qr.svg" alt="Instagram QRコード" />
+                <span>スマホでスキャン → フォローお願いします</span>
               </a>
             </div>
           </Reveal>

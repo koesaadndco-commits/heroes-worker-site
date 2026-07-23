@@ -156,6 +156,30 @@ table.profile th{width:32%;color:var(--ink-soft);font-weight:700;white-space:now
 .map-box iframe{width:100%;height:100%;border:0}
 @media(max-width:900px){.company-grid{grid-template-columns:1fr;gap:32px}}
 
+/* Media sections (Craft / Greeting) */
+.media-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
+.media-text .kicker{font-family:var(--font-oswald),sans-serif;font-size:14px;font-weight:700;letter-spacing:.22em;color:var(--orange);text-transform:uppercase}
+.media-text h2{font-size:clamp(24px,3.4vw,34px);font-weight:900;margin:10px 0 18px;line-height:1.4}
+.media-text p{color:var(--ink-soft);font-size:16px;line-height:2.0}
+.media-photo{position:relative}
+.media-photo img{width:100%;height:auto;display:block}
+.greeting-name{margin-top:22px;font-weight:900;font-size:17px;color:var(--ink);letter-spacing:.04em}
+@media(max-width:900px){
+  .media-grid{grid-template-columns:1fr;gap:28px}
+}
+
+/* Banner (atmosphere) */
+.banner{position:relative;overflow:hidden;text-align:center;padding:104px 0;
+  background:linear-gradient(180deg,#0c0b0a,#0a0a0a)}
+.banner-overlay{position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(760px 400px at 50% 20%,rgba(255,122,24,.20),transparent 62%),radial-gradient(500px 300px at 82% 80%,rgba(232,93,4,.12),transparent 60%)}
+.banner-inner{position:relative;z-index:1}
+.banner .kicker{font-family:var(--font-oswald),sans-serif;font-size:14px;font-weight:700;letter-spacing:.22em;color:var(--orange);text-transform:uppercase}
+.banner h2{font-size:clamp(26px,4vw,40px);font-weight:900;line-height:1.45;margin:10px 0 14px}
+.banner h2 .hl{color:var(--orange)}
+.banner p{color:var(--ink-soft);font-size:16px}
+@media(max-width:900px){.banner{padding:72px 0}}
+
 /* CTA */
 .cta{background:radial-gradient(600px 300px at 50% 0%,rgba(255,122,24,.3),transparent 70%),linear-gradient(135deg,var(--orange-deep),#7a2e00);color:#fff;text-align:center;border-radius:24px;padding:66px 28px;box-shadow:var(--shadow);position:relative;overflow:hidden}
 .cta h2{font-size:clamp(24px,4vw,36px);font-weight:900;margin-bottom:14px}
