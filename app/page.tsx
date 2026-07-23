@@ -72,7 +72,7 @@ export default function Home() {
           </Reveal>
           <Reveal className="hero-portrait faded-photo">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/shimizu.png" alt={`代表 ${site.company.rep}`} />
+            <img src="/worker.jpg" alt={`代表 ${site.company.rep}`} />
             <span className="hero-portrait-name">
               代表 清水 寛也
             </span>

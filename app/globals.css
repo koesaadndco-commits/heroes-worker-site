@@ -169,10 +169,11 @@ table.profile th{width:32%;color:var(--ink-soft);font-weight:700;white-space:now
 }
 
 /* Banner (atmosphere) */
-.banner{position:relative;overflow:hidden;text-align:center;padding:104px 0;
-  background:linear-gradient(180deg,#0c0b0a,#0a0a0a)}
-.banner-overlay{position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(760px 400px at 50% 20%,rgba(255,122,24,.20),transparent 62%),radial-gradient(500px 300px at 82% 80%,rgba(232,93,4,.12),transparent 60%)}
+.banner{position:relative;overflow:hidden;text-align:center;padding:104px 0;background:#0b0a09}
+.banner::before{content:"";position:absolute;inset:0;z-index:0;
+  background-image:url(/banner.jpg);background-size:cover;background-position:center 42%;opacity:.55}
+.banner-overlay{position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(10,10,10,.55),rgba(10,10,10,.78)),radial-gradient(760px 400px at 50% 20%,rgba(255,122,24,.20),transparent 62%),radial-gradient(500px 300px at 82% 80%,rgba(232,93,4,.12),transparent 60%)}
 .banner-inner{position:relative;z-index:1}
 .banner .kicker{font-family:var(--font-oswald),sans-serif;font-size:14px;font-weight:700;letter-spacing:.22em;color:var(--orange);text-transform:uppercase}
 .banner h2{font-size:clamp(26px,4vw,40px);font-weight:900;line-height:1.45;margin:10px 0 14px}
