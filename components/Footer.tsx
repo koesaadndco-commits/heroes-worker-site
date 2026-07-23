@@ -30,6 +30,23 @@ export default function Footer() {
               <a href={site.contact.telHref}>{site.contact.tel}</a>
               <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
             </div>
+            <div className="foot-col foot-sns">
+              <h4>Instagram</h4>
+              <a
+                className="qr-card"
+                href={site.social.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram（@heroes_worker）"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/instagram-qr.svg" alt="Instagram QRコード" />
+              </a>
+              <a href={site.social.instagram} target="_blank" rel="noopener noreferrer">
+                {site.social.instagramHandle}
+              </a>
+              <span className="qr-note">施工事例を更新中</span>
+            </div>
           </div>
         </div>
         <div className="foot-bottom">

@@ -51,22 +51,32 @@ export default function Home() {
       {/* HERO */}
       <section className="hero" id="top">
         <Sparks />
-        <Reveal className="wrap">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className="hero-logo" src="/logo.png" alt="Heroes Worker ロゴ" />
-          <h1>
-            その一手間に、<span className="hl">職人の誇り</span>を。
-          </h1>
-          <p className="lead">{site.description}</p>
-          <div className="hero-actions">
-            <Link href="/#contact" className="btn btn-primary">
-              無料で見積もり依頼 →
-            </Link>
-            <Link href="/works" className="btn btn-ghost">
-              施工事例を見る
-            </Link>
-          </div>
-        </Reveal>
+        <div className="wrap hero-grid">
+          <Reveal className="hero-copy">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img className="hero-logo" src="/logo.png" alt="Heroes Worker ロゴ" />
+            <h1>
+              <span className="l1">その一手間に、</span>
+              <span className="l2">
+                <span className="hl">職人の誇り</span>を。
+              </span>
+            </h1>
+            <p className="lead">{site.description}</p>
+            <div className="hero-actions">
+              <Link href="/#contact" className="btn btn-primary">
+                無料で見積もり依頼 →
+              </Link>
+              <Link href="/works" className="btn btn-ghost">
+                施工事例を見る
+              </Link>
+            </div>
+          </Reveal>
+          <Reveal className="hero-portrait faded-photo">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/shimizu.png" alt={`代表 ${site.company.rep}`} />
+            <span className="hero-portrait-name">代表 清水 寛也</span>
+          </Reveal>
+        </div>
       </section>
 
       {/* SERVICES */}
@@ -182,6 +192,26 @@ export default function Home() {
         </div>
       </section>
 
+      {/* PHILOSOPHY (経営理念) */}
+      <section id="philosophy" className="philosophy">
+        <div className="wrap philo-inner">
+          <Reveal>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img className="philo-logo" src="/logo.png" alt="Heroes Worker" />
+            <div className="philo-divider"><span /><i>◆</i><span /></div>
+            <span className="philo-kicker">Philosophy</span>
+            <p className="philo-sub">― 経営理念 ―</p>
+            <p className="philo-creed">
+              溶接・金属加工を通じて<br />
+              関わるすべての方との<br />
+              <span className="hl">繋がり</span>を大切にし<br />
+              <span className="hl">感謝</span>の心を忘れず<br />
+              <span className="hl">笑顔</span>を生み出す存在へ
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
       {/* COMPANY */}
       <section id="company" className="bg-2">
         <div className="wrap">
@@ -255,6 +285,28 @@ export default function Home() {
                   <div className="v">〒{site.address.zip}<br />{site.address.line}</div>
                 </div>
               </div>
+              <div className="info-row">
+                <span className="ic">📷</span>
+                <div>
+                  <div className="l">Instagram</div>
+                  <div className="v">
+                    <a href={site.social.instagram} target="_blank" rel="noopener noreferrer">
+                      {site.social.instagramHandle}
+                    </a>
+                  </div>
+                  <div className="l">施工事例を更新中</div>
+                </div>
+              </div>
+              <a
+                className="qr-card-contact"
+                href={site.social.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/instagram-qr.svg" alt="Instagram QRコード（@heroes_worker）" />
+                <span>QRコードから<br />Instagramをフォロー</span>
+              </a>
             </div>
           </Reveal>
         </div>
