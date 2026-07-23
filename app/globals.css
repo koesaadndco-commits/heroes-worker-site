@@ -58,7 +58,13 @@ header{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.82);backdrop-f
 
 /* Hero */
 .hero{position:relative;overflow:hidden;padding:80px 0 84px;
-  background:radial-gradient(900px 500px at 50% -5%,rgba(255,122,24,.22),transparent 60%),radial-gradient(600px 400px at 85% 30%,rgba(232,93,4,.12),transparent 60%),linear-gradient(180deg,#0d0d0d,#0a0a0a)}
+  background:linear-gradient(180deg,#141210,#0d0c0b)}
+.hero::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+    linear-gradient(180deg,rgba(14,13,12,.42),rgba(12,11,10,.58)),
+    radial-gradient(900px 500px at 50% -5%,rgba(255,122,24,.20),transparent 60%),
+    radial-gradient(600px 400px at 85% 30%,rgba(232,93,4,.12),transparent 60%),
+    url(/hero-bg.jpg) center/cover no-repeat}
 .spark{position:absolute;width:3px;height:3px;border-radius:50%;background:var(--ember);box-shadow:0 0 8px var(--orange);opacity:0;animation:rise 6s linear infinite}
 @keyframes rise{0%{transform:translateY(40px) scale(.6);opacity:0}15%{opacity:1}100%{transform:translateY(-260px) scale(0);opacity:0}}
 .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:12px;align-items:center;position:relative;z-index:1;overflow:visible}
@@ -169,11 +175,10 @@ table.profile th{width:32%;color:var(--ink-soft);font-weight:700;white-space:now
 }
 
 /* Banner (atmosphere) */
-.banner{position:relative;overflow:hidden;text-align:center;padding:104px 0;background:#0b0a09}
-.banner::before{content:"";position:absolute;inset:0;z-index:0;
-  background-image:url(/banner.jpg);background-size:cover;background-position:center 42%;opacity:.55}
-.banner-overlay{position:absolute;inset:0;z-index:0;pointer-events:none;
-  background:linear-gradient(180deg,rgba(10,10,10,.55),rgba(10,10,10,.78)),radial-gradient(760px 400px at 50% 20%,rgba(255,122,24,.20),transparent 62%),radial-gradient(500px 300px at 82% 80%,rgba(232,93,4,.12),transparent 60%)}
+.banner{position:relative;overflow:hidden;text-align:center;padding:104px 0;
+  background:linear-gradient(180deg,#0f0d0b,#0a0a0a)}
+.banner-overlay{position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(760px 400px at 50% 20%,rgba(255,122,24,.20),transparent 62%),radial-gradient(500px 300px at 82% 80%,rgba(232,93,4,.12),transparent 60%)}
 .banner-inner{position:relative;z-index:1}
 .banner .kicker{font-family:var(--font-oswald),sans-serif;font-size:14px;font-weight:700;letter-spacing:.22em;color:var(--orange);text-transform:uppercase}
 .banner h2{font-size:clamp(26px,4vw,40px);font-weight:900;line-height:1.45;margin:10px 0 14px}
