@@ -174,17 +174,33 @@ table.profile th{width:32%;color:var(--ink-soft);font-weight:700;white-space:now
 @media(max-width:900px){
   .media-grid{grid-template-columns:1fr;gap:28px}
 }
+/* 代表メッセージ：オレンジの円の中心から光 */
+#greeting{position:relative;overflow:hidden;
+  background:radial-gradient(58% 66% at 52% 46%,rgba(255,122,24,.22),rgba(232,93,4,.06) 46%,rgba(10,10,10,0) 72%),linear-gradient(180deg,#0c0a08,#0a0a0a)}
+#greeting>.wrap{position:relative;z-index:1}
 
-/* Banner (atmosphere) */
-.banner{position:relative;overflow:hidden;text-align:center;padding:104px 0;
-  background:linear-gradient(180deg,#0f0d0b,#0a0a0a)}
-.banner-overlay{position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(760px 400px at 50% 20%,rgba(255,122,24,.20),transparent 62%),radial-gradient(500px 300px at 82% 80%,rgba(232,93,4,.12),transparent 60%)}
+/* 色みのアクセント：ロゴのひまわりを色違いで各セクションの角に */
+#services,#strengths,#flow,#company{position:relative;overflow:hidden}
+#services>.wrap,#strengths>.wrap,#flow>.wrap,#company>.wrap{position:relative;z-index:1}
+#services::after,#strengths::after,#flow::after,#company::after{
+  content:"";position:absolute;width:190px;height:190px;z-index:0;pointer-events:none;
+  background:url(/sunflower.png) center/contain no-repeat;opacity:.14}
+#services::after{top:-46px;right:-46px}
+#strengths::after{bottom:-50px;left:-50px;filter:hue-rotate(160deg) saturate(1.15)}
+#flow::after{top:-46px;left:-46px;filter:hue-rotate(95deg) saturate(1.05)}
+#company::after{bottom:-50px;right:-50px;filter:hue-rotate(238deg) saturate(1.1)}
+
+/* Banner (atmosphere) — 背中ロゴ写真を背景に */
+.banner{position:relative;overflow:hidden;text-align:center;padding:118px 0;background:#0b0a09}
+.banner::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:url(/banner.jpg) center 42%/cover no-repeat;opacity:.72;filter:brightness(1.14)}
+.banner-overlay{position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(10,10,10,.42),rgba(10,10,10,.6)),radial-gradient(760px 400px at 50% 22%,rgba(255,122,24,.20),transparent 62%)}
 .banner-inner{position:relative;z-index:1}
-.banner .kicker{font-family:var(--font-oswald),sans-serif;font-size:14px;font-weight:700;letter-spacing:.22em;color:var(--orange);text-transform:uppercase}
-.banner h2{font-size:clamp(26px,4vw,40px);font-weight:900;line-height:1.45;margin:10px 0 14px}
+.banner .kicker{font-family:var(--font-oswald),sans-serif;font-size:14px;font-weight:700;letter-spacing:.22em;color:var(--orange);text-transform:uppercase;text-shadow:0 2px 12px rgba(0,0,0,.6)}
+.banner h2{font-size:clamp(26px,4vw,40px);font-weight:900;line-height:1.45;margin:10px 0 14px;text-shadow:0 2px 16px rgba(0,0,0,.6)}
 .banner h2 .hl{color:var(--orange)}
-.banner p{color:var(--ink-soft);font-size:16px}
+.banner p{color:#e9e4de;font-size:16px;text-shadow:0 1px 10px rgba(0,0,0,.55)}
 @media(max-width:900px){.banner{padding:72px 0}}
 
 /* CTA */
