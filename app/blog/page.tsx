@@ -7,9 +7,9 @@ import { posts } from "@/lib/blog";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: `ブログ | ${site.name}`,
+  title: `ヒーローズ ブログ | ${site.name}`,
   description:
-    "Heroes Worker の施工事例・お知らせ・溶接コラムを発信するブログです。",
+    "Heroes Worker の施工事例・お知らせ・溶接コラムを発信するヒーローズ ブログです。",
 };
 
 export default function BlogIndex() {
@@ -20,8 +20,8 @@ export default function BlogIndex() {
       <section className="page-hero">
         <div className="wrap">
           <Reveal className="section-head">
-            <span className="kicker">Blog</span>
-            <h2>ブログ</h2>
+            <span className="kicker">Heroes Blog</span>
+            <h2>ヒーローズ ブログ</h2>
             <p>施工事例・お知らせ・溶接コラムを発信しています。</p>
           </Reveal>
         </div>
