@@ -261,6 +261,13 @@ export default function Home() {
               <br />
               <span className="hl">笑顔</span>を生み出す存在へ
             </p>
+            <p className="philo-vision">
+              「困った時に頼られる」
+              <br />
+              「必要とされた時に駆けつける」
+              <br />
+              そんな<span className="hl">ヒーロー</span>のような存在であり続けます。
+            </p>
           </Reveal>
         </div>
       </section>

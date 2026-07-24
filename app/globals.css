@@ -251,6 +251,9 @@ table.profile th{width:32%;color:var(--ink-soft);font-weight:700;white-space:now
 .philo-sub{margin:9px 0 26px;color:var(--ink-soft);letter-spacing:.24em;font-size:14px}
 .philo-creed{font-size:clamp(21px,3.3vw,30px);line-height:2.0;font-weight:700;color:#fff;letter-spacing:.02em}
 .philo-creed .hl{color:var(--orange)}
+.philo-vision{margin-top:30px;padding-top:26px;border-top:1px solid rgba(255,122,24,.28);
+  font-size:clamp(16px,2.2vw,20px);line-height:2.0;font-weight:700;color:#f1ede9}
+.philo-vision .hl{color:var(--orange)}
 @media(max-width:900px){.philosophy{padding:66px 0 72px}.philo-creed{line-height:1.95}}
 
 /* Contact */
@@ -280,7 +283,8 @@ table.profile th{width:32%;color:var(--ink-soft);font-weight:700;white-space:now
 /* Footer */
 footer{background:#060606;color:#a3a3a3;padding:56px 0 28px;border-top:1px solid var(--line)}
 .foot-grid{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-bottom:36px}
-.foot-brand .logo{margin-bottom:14px}
+.foot-brand .logo{margin-bottom:16px}
+.foot-brand .logo img{height:78px}
 .foot-brand p{font-size:14px;max-width:30em;color:var(--ink-dim)}
 .foot-cols{display:flex;gap:64px;flex-wrap:wrap}
 .foot-col h4{font-family:var(--font-oswald),sans-serif;font-size:13px;letter-spacing:.14em;color:#fff;margin-bottom:14px;text-transform:uppercase}
