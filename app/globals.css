@@ -97,12 +97,12 @@ header{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.82);backdrop-f
 }
 @keyframes rise{0%{transform:translateY(40px) scale(.6);opacity:0}15%{opacity:1}100%{transform:translateY(-260px) scale(0);opacity:0}}
 .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:12px;align-items:center;position:relative;z-index:3;overflow:visible}
-.hero-copy{text-align:left;position:relative;z-index:3}
-.hero-logo{width:min(360px,78%);margin:0 0 26px;filter:drop-shadow(0 0 40px rgba(255,122,24,.35))}
-.hero h1{font-size:clamp(24px,3.7vw,42px);line-height:1.5;font-weight:900;position:relative;z-index:3;text-shadow:0 2px 18px rgba(0,0,0,.55)}
+.hero-copy{text-align:center;position:relative;z-index:3}
+.hero-logo{width:min(360px,78%);margin:0 auto 26px;filter:drop-shadow(0 0 40px rgba(255,122,24,.35))}
+.hero h1{font-size:clamp(24px,3.7vw,42px);line-height:1.6;font-weight:900;position:relative;z-index:3;text-shadow:0 2px 18px rgba(0,0,0,.6)}
 .hero h1 .hl{color:var(--orange)}
-.hero p.lead{margin:22px 0 34px;font-size:16.5px;color:var(--ink-soft);max-width:34em}
-.hero-actions{display:flex;gap:14px;justify-content:flex-start;flex-wrap:wrap}
+.hero p.lead{margin:22px auto 34px;font-size:16.5px;color:#f2efec;max-width:34em;text-shadow:0 1px 10px rgba(0,0,0,.6)}
+.hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 .hero-portrait{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;margin-left:-70px;z-index:1}
 .hero-portrait::before{content:"";position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);
   width:82%;aspect-ratio:1;border-radius:50%;
@@ -111,7 +111,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.82);backdrop-f
 .hero-portrait img{position:relative;z-index:1;width:auto;max-width:100%;max-height:min(620px,80vh);height:auto;
   filter:drop-shadow(0 24px 40px rgba(0,0,0,.6))}
 .hero-portrait-name{position:relative;z-index:1;margin-top:-6px;font-family:var(--font-oswald),sans-serif;
-  font-size:14px;letter-spacing:.08em;color:var(--ink-soft)}
+  font-size:14px;letter-spacing:.08em;color:#f0efec;text-shadow:0 1px 8px rgba(0,0,0,.6)}
 .hero-portrait-name::before{content:"";display:inline-block;width:22px;height:2px;background:var(--orange);
   vertical-align:middle;margin-right:10px}
 /* 写真と背景の境界をぼかす（四辺均等フェード） */

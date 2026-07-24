@@ -62,9 +62,11 @@ export default function Home() {
             <img className="hero-logo" src="/logo.png" alt="Heroes Worker ロゴ" />
             <h1>
               溶接職人としての<span className="hl">誇り</span>と
-              <span className="hl">確かな技術</span>で<span className="hl">価値創造</span>。
+              <span className="hl">プライド</span>を持ち、
               <br />
-              最高品質を維持するため、<span className="hl">一切の妥協無し</span>。
+              確かな技術で<span className="hl">価値創造</span>。
+              <br />
+              最高品質でお渡しするため、<span className="hl">一切の妥協無し</span>。
             </h1>
             <p className="lead">{site.description}</p>
             <div className="hero-actions">
