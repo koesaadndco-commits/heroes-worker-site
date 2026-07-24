@@ -50,9 +50,14 @@ export default function Home() {
 
       {/* HERO */}
       <section className="hero" id="top">
+        <div className="hero-slides" aria-hidden="true">
+          <div className="hero-slide s1" />
+          <div className="hero-slide s2" />
+          <div className="hero-slide s3" />
+        </div>
         <Sparks />
         <div className="wrap hero-grid">
-          <Reveal className="hero-copy">
+          <div className="hero-copy">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img className="hero-logo" src="/logo.png" alt="Heroes Worker ロゴ" />
             <h1>
@@ -70,14 +75,14 @@ export default function Home() {
                 施工事例を見る
               </Link>
             </div>
-          </Reveal>
-          <Reveal className="hero-portrait faded-photo">
+          </div>
+          <div className="hero-portrait faded-photo">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/worker.jpg" alt={`代表 ${site.company.rep}`} />
             <span className="hero-portrait-name">
               代表 清水 寛也
             </span>
-          </Reveal>
+          </div>
         </div>
       </section>
 

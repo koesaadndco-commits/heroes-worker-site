@@ -59,16 +59,44 @@ header{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.82);backdrop-f
 /* Hero */
 .hero{position:relative;overflow:hidden;padding:80px 0 84px;
   background:linear-gradient(180deg,#141210,#0d0c0b)}
-.hero::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+/* 背景スライドショー（ゆっくりズームでクロスフェード） */
+.hero-slides{position:absolute;inset:0;z-index:0;overflow:hidden}
+.hero-slide{position:absolute;inset:0;background-size:cover;background-position:center;
+  opacity:0;will-change:opacity,transform;animation:heroSlide 21s infinite;filter:brightness(1.16)}
+.hero-slide.s1{background-image:url(/hero-bg.jpg);animation-delay:0s}
+.hero-slide.s2{background-image:url(/craft.jpg);animation-delay:7s}
+.hero-slide.s3{background-image:url(/greeting.jpg);animation-delay:14s}
+@keyframes heroSlide{
+  0%{opacity:0;transform:scale(1.04)}
+  4%{opacity:1}
+  28%{opacity:1}
+  33%{opacity:0;transform:scale(1.10)}
+  100%{opacity:0;transform:scale(1.10)}
+}
+/* スクリム（写真の上・文字の下） */
+.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
   background:
     linear-gradient(90deg,rgba(10,10,10,.62),rgba(10,10,10,.22) 52%,rgba(10,10,10,0) 82%),
-    linear-gradient(180deg,rgba(14,13,12,.20),rgba(12,11,10,.40)),
-    radial-gradient(900px 500px at 50% -5%,rgba(255,122,24,.16),transparent 60%),
-    url(/hero-bg.jpg) center/cover no-repeat;
-  filter:brightness(1.18)}
-.spark{position:absolute;width:3px;height:3px;border-radius:50%;background:var(--ember);box-shadow:0 0 8px var(--orange);opacity:0;animation:rise 6s linear infinite}
+    linear-gradient(180deg,rgba(14,13,12,.18),rgba(12,11,10,.42)),
+    radial-gradient(900px 500px at 50% -5%,rgba(255,122,24,.16),transparent 60%)}
+.spark{position:absolute;z-index:2;width:3px;height:3px;border-radius:50%;background:var(--ember);box-shadow:0 0 12px var(--orange),0 0 4px #fff;opacity:0;animation:rise 6s linear infinite}
+/* ヒーロー要素のフワッと表示 */
+@keyframes heroUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.hero-copy>*{opacity:0;animation:heroUp .85s cubic-bezier(.2,.7,.2,1) forwards}
+.hero-copy>*:nth-child(1){animation-delay:.15s}
+.hero-copy>*:nth-child(2){animation-delay:.32s}
+.hero-copy>*:nth-child(3){animation-delay:.49s}
+.hero-copy>*:nth-child(4){animation-delay:.63s}
+@keyframes heroPortraitIn{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:none}}
+.hero-portrait{opacity:0;animation:heroPortraitIn 1s .45s cubic-bezier(.2,.7,.2,1) forwards}
+@media(prefers-reduced-motion:reduce){
+  .hero-slide{animation:none}
+  .hero-slide.s1{opacity:1}
+  .hero-slide.s2,.hero-slide.s3{opacity:0}
+  .hero-copy>*,.hero-portrait{animation:none;opacity:1}
+}
 @keyframes rise{0%{transform:translateY(40px) scale(.6);opacity:0}15%{opacity:1}100%{transform:translateY(-260px) scale(0);opacity:0}}
-.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:12px;align-items:center;position:relative;z-index:1;overflow:visible}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:12px;align-items:center;position:relative;z-index:3;overflow:visible}
 .hero-copy{text-align:left;position:relative;z-index:3}
 .hero-logo{width:min(360px,78%);margin:0 0 26px;filter:drop-shadow(0 0 40px rgba(255,122,24,.35))}
 .hero h1{font-size:clamp(24px,3.7vw,42px);line-height:1.5;font-weight:900;position:relative;z-index:3;text-shadow:0 2px 18px rgba(0,0,0,.55)}

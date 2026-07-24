@@ -6,11 +6,11 @@ type Spark = { left: string; bottom: string; delay: string; duration: string };
 export default function Sparks() {
   const [sparks, setSparks] = useState<Spark[]>([]);
   useEffect(() => {
-    const arr: Spark[] = Array.from({ length: 22 }, (_, i) => ({
-      left: `${8 + ((i * 4.1) % 84)}%`,
-      bottom: `${10 + (i % 5) * 8}%`,
-      delay: `${(i * 0.27) % 6}s`,
-      duration: `${4 + (i % 4)}s`,
+    const arr: Spark[] = Array.from({ length: 42 }, (_, i) => ({
+      left: `${4 + ((i * 2.35) % 92)}%`,
+      bottom: `${6 + (i % 6) * 8}%`,
+      delay: `${(i * 0.19) % 6}s`,
+      duration: `${3.5 + (i % 5) * 0.8}s`,
     }));
     setSparks(arr);
   }, []);
