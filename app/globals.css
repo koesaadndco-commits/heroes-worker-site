@@ -60,7 +60,9 @@ header{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.82);backdrop-f
 .hero{position:relative;overflow:hidden;padding:80px 0 84px;
   background:linear-gradient(180deg,#141210,#0d0c0b)}
 /* 背景スライドショー（ゆっくりズームでクロスフェード） */
-.hero-slides{position:absolute;inset:0;z-index:0;overflow:hidden}
+.hero-slides{position:absolute;inset:0;z-index:0;overflow:hidden;
+  -webkit-mask-image:linear-gradient(to bottom,#000 0,#000 40%,rgba(0,0,0,0) 76%);
+  mask-image:linear-gradient(to bottom,#000 0,#000 40%,rgba(0,0,0,0) 76%)}
 .hero-slide{position:absolute;inset:0;background-size:cover;background-position:center;
   opacity:0;will-change:opacity,transform;animation:heroSlide 30s infinite;filter:brightness(1.14) blur(3px)}
 /* 火花シーン（小さい画像なので強めにぼかして光として活かす） */
@@ -114,10 +116,10 @@ header{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.82);backdrop-f
   filter:blur(6px);z-index:0}
 .hero-portrait img{position:relative;z-index:1;width:auto;max-width:100%;max-height:min(620px,80vh);height:auto;
   filter:drop-shadow(0 24px 40px rgba(0,0,0,.6))}
-.hero-portrait-name{position:relative;z-index:1;margin-top:-6px;font-family:var(--font-oswald),sans-serif;
-  font-size:14px;letter-spacing:.08em;color:#f0efec;text-shadow:0 1px 8px rgba(0,0,0,.6)}
-.hero-portrait-name::before{content:"";display:inline-block;width:22px;height:2px;background:var(--orange);
-  vertical-align:middle;margin-right:10px}
+.hero-portrait-name{position:relative;z-index:1;margin-top:6px;font-family:var(--font-oswald),sans-serif;
+  font-size:20px;font-weight:700;letter-spacing:.1em;color:#ffffff;text-shadow:0 2px 10px rgba(0,0,0,.7)}
+.hero-portrait-name::before{content:"";display:inline-block;width:34px;height:3px;background:var(--orange);
+  vertical-align:middle;margin-right:12px}
 /* 写真と背景の境界をぼかす（四辺均等フェード） */
 .faded-photo img{border-radius:0;
   -webkit-mask-image:linear-gradient(to right,transparent 0,#000 16%,#000 84%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 16%,#000 84%,transparent 100%);
