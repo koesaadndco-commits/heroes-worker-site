@@ -17,12 +17,15 @@ export default function BlogIndex() {
     <>
       <Header />
 
-      <section className="page-hero">
+      <section className="blog-hero">
         <div className="wrap">
-          <Reveal className="section-head">
-            <span className="kicker">Heroes Blog</span>
-            <h2>ヒーローズ ブログ</h2>
-            <p>施工事例・お知らせ・溶接コラムを発信しています。</p>
+          <h1 className="sr-only">ヒーローズ ブログ</h1>
+          <Reveal className="blog-hero-banner">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/blog-hero.jpg"
+              alt="ヒーローズ ブログ — 施工事例・お知らせ・溶接日常コラムを発信しています"
+            />
           </Reveal>
         </div>
       </section>
