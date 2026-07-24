@@ -54,6 +54,7 @@ export default function Home() {
           <div className="hero-slide s1" />
           <div className="hero-slide s2" />
           <div className="hero-slide s3" />
+          <div className="hero-slide s4" />
         </div>
         <Sparks />
         <div className="wrap hero-grid">
@@ -260,6 +261,13 @@ export default function Home() {
               <span className="hl">感謝</span>の心を忘れず
               <br />
               <span className="hl">笑顔</span>を生み出す存在へ
+            </p>
+            <p className="philo-vision">
+              「困った時に頼られる」
+              <br />
+              「必要とされた時に駆けつける」
+              <br />
+              そんな<span className="hl">ヒーロー</span>のような存在であり続けます。
             </p>
           </Reveal>
         </div>
