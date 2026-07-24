@@ -61,9 +61,9 @@ header{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.82);backdrop-f
   background:linear-gradient(180deg,#141210,#0d0c0b)}
 /* 背景スライドショー（ゆっくりズームでクロスフェード） */
 .hero-slides{position:absolute;inset:0;z-index:0;overflow:hidden;
-  -webkit-mask-image:linear-gradient(to right,#000 0,#000 40%,rgba(0,0,0,0) 62%),linear-gradient(to bottom,#000 0,#000 62%,rgba(0,0,0,0) 94%);
+  -webkit-mask-image:linear-gradient(to right,#000 0,#000 18%,rgba(0,0,0,0) 34%),linear-gradient(to bottom,#000 0,#000 62%,rgba(0,0,0,0) 94%);
   -webkit-mask-composite:source-in;
-  mask-image:linear-gradient(to right,#000 0,#000 40%,rgba(0,0,0,0) 62%),linear-gradient(to bottom,#000 0,#000 62%,rgba(0,0,0,0) 94%);
+  mask-image:linear-gradient(to right,#000 0,#000 18%,rgba(0,0,0,0) 34%),linear-gradient(to bottom,#000 0,#000 62%,rgba(0,0,0,0) 94%);
   mask-composite:intersect}
 .hero-slide{position:absolute;inset:0;background-size:cover;background-position:center;
   opacity:0;will-change:opacity,transform;animation:heroSlide 30s infinite;filter:brightness(1.14) blur(3px)}
@@ -314,6 +314,7 @@ footer{background:#060606;color:#a3a3a3;padding:56px 0 28px;border-top:1px solid
 
 /* Works page */
 .page-hero{position:relative;overflow:hidden;text-align:center;padding:80px 0 64px;background:radial-gradient(800px 400px at 50% -10%,rgba(255,122,24,.2),transparent 60%),linear-gradient(180deg,#0d0d0d,#0a0a0a)}
+.page-hero>.wrap{position:relative;z-index:3}
 .page-hero .kicker{font-family:var(--font-oswald),sans-serif;font-size:14px;font-weight:700;letter-spacing:.22em;color:var(--orange);text-transform:uppercase}
 .page-hero h1{font-size:clamp(30px,5vw,46px);font-weight:900;margin:8px 0 14px}
 .page-hero p{color:var(--ink-soft);font-size:16px;max-width:40em;margin:0 auto}

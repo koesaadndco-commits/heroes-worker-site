@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Reveal from "@/components/Reveal";
+import Sparks from "@/components/Sparks";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -91,6 +92,7 @@ export default function Recruit() {
       <Header />
 
       <section className="page-hero">
+        <Sparks />
         <div className="wrap">
           <Reveal className="section-head">
             <span className="kicker">Recruit</span>
