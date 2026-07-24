@@ -208,7 +208,7 @@ table.profile th{width:32%;color:var(--ink-soft);font-weight:700;white-space:now
 }
 /* 代表メッセージ：オレンジの円の中心から光 */
 #greeting{position:relative;overflow:hidden;
-  background:radial-gradient(58% 66% at 52% 46%,rgba(255,122,24,.22),rgba(232,93,4,.06) 46%,rgba(10,10,10,0) 72%),linear-gradient(180deg,#0c0a08,#0a0a0a)}
+  background:radial-gradient(100% 110% at 50% 45%,rgba(255,122,24,.34),rgba(232,93,4,.14) 38%,rgba(255,122,24,.04) 62%,rgba(10,10,10,0) 82%),linear-gradient(180deg,#0d0b08,#0a0a0a)}
 #greeting>.wrap{position:relative;z-index:1}
 
 /* 色みのアクセント：ロゴのひまわりを色違いで各セクションの角に */
@@ -287,9 +287,10 @@ table.profile th{width:32%;color:var(--ink-soft);font-weight:700;white-space:now
 /* Footer */
 footer{background:#060606;color:#a3a3a3;padding:56px 0 28px;border-top:1px solid var(--line)}
 .foot-grid{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-bottom:36px}
-.foot-brand .logo{margin-bottom:16px}
+.foot-brand{text-align:center}
+.foot-brand .logo{justify-content:center;margin-bottom:16px}
 .foot-brand .logo img{height:78px}
-.foot-brand p{font-size:14px;max-width:30em;color:var(--ink-dim)}
+.foot-brand p{font-size:14px;max-width:30em;margin:0 auto;color:var(--ink-dim)}
 .foot-cols{display:flex;gap:64px;flex-wrap:wrap}
 .foot-col h4{font-family:var(--font-oswald),sans-serif;font-size:13px;letter-spacing:.14em;color:#fff;margin-bottom:14px;text-transform:uppercase}
 .foot-col a{display:block;font-size:14px;color:var(--ink-dim);padding:5px 0;transition:color .15s}
@@ -324,6 +325,11 @@ footer{background:#060606;color:#a3a3a3;padding:56px 0 28px;border-top:1px solid
 @media(max-width:900px){.gallery{grid-template-columns:1fr 1fr;gap:14px}}
 @media(max-width:560px){.gallery{grid-template-columns:1fr}}
 .empty-note{text-align:center;color:var(--ink-dim);font-size:14px;padding:30px 0}
+/* 現在調整中の案内 */
+.prep-note{max-width:640px;margin:16px auto 0;text-align:center;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:46px 32px}
+.prep-title{font-size:clamp(20px,3vw,26px);font-weight:900;margin-bottom:14px}
+.prep-text{color:var(--ink-soft);font-size:15px;line-height:1.95}
+.prep-note .btn{margin-top:24px}
 
 /* Lightbox */
 .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:100;display:grid;place-items:center;padding:24px}
