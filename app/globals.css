@@ -344,6 +344,9 @@ footer{background:#060606;color:#a3a3a3;padding:56px 0 28px;border-top:1px solid
 .job-common h3{font-size:18px;margin-bottom:14px;text-align:center}
 .recruit-table th{width:26%}
 .job-note{margin-top:16px;font-size:13px;color:var(--ink-dim);text-align:center}
+.recruit-empty{max-width:640px;margin:0 auto;text-align:center;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:48px 32px}
+.recruit-empty-title{font-size:clamp(20px,3vw,26px);font-weight:900;margin-bottom:16px}
+.recruit-empty-text{color:var(--ink-soft);font-size:15px;line-height:1.9;margin-bottom:26px}
 .recruit-cta-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 .btn-ghost-white{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.6)}
 .btn-ghost-white:hover{background:rgba(255,255,255,.12)}

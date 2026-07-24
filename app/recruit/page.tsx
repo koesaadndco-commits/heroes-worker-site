@@ -36,6 +36,9 @@ const wanted = [
   "チームで協力しながら成長したい方",
 ];
 
+// 募集状況：求人がない期間は false にすると「現在、求人情報はありません」と表示されます
+const isRecruiting = true;
+
 // 全雇用形態に共通の情報
 const common = [
   { th: "職種", td: "溶接・金属加工スタッフ" },
@@ -162,46 +165,63 @@ export default function Recruit() {
           <Reveal className="section-head">
             <span className="kicker">Requirements</span>
             <h2>募集要項</h2>
-            <p>ご希望の働き方に合わせて、正社員・パート・アルバイトを募集しています。</p>
+            {isRecruiting && (
+              <p>ご希望の働き方に合わせて、正社員・パート・アルバイトを募集しています。</p>
+            )}
           </Reveal>
 
-          {/* 雇用形態別 */}
-          <div className="job-cards">
-            {jobs.map((j) => (
-              <Reveal className="job-card" key={j.type}>
-                <div className="job-card-head">
-                  <span className="job-tag">{j.tag}</span>
-                  <h3>{j.type}</h3>
-                </div>
-                <dl className="job-spec">
-                  {j.rows.map(([k, v]) => (
-                    <div className="job-spec-row" key={k}>
-                      <dt>{k}</dt>
-                      <dd>{v}</dd>
+          {isRecruiting ? (
+            <>
+              {/* 雇用形態別 */}
+              <div className="job-cards">
+                {jobs.map((j) => (
+                  <Reveal className="job-card" key={j.type}>
+                    <div className="job-card-head">
+                      <span className="job-tag">{j.tag}</span>
+                      <h3>{j.type}</h3>
                     </div>
-                  ))}
-                </dl>
-              </Reveal>
-            ))}
-          </div>
-
-          {/* 共通事項 */}
-          <Reveal className="job-common">
-            <h3>共通事項</h3>
-            <table className="profile recruit-table">
-              <tbody>
-                {common.map((r) => (
-                  <tr key={r.th}>
-                    <th>{r.th}</th>
-                    <td>{r.td}</td>
-                  </tr>
+                    <dl className="job-spec">
+                      {j.rows.map(([k, v]) => (
+                        <div className="job-spec-row" key={k}>
+                          <dt>{k}</dt>
+                          <dd>{v}</dd>
+                        </div>
+                      ))}
+                    </dl>
+                  </Reveal>
                 ))}
-              </tbody>
-            </table>
-            <p className="job-note">
-              ※記載の勤務時間・給与などは目安です。詳細は面談にてご相談のうえ決定します。
-            </p>
-          </Reveal>
+              </div>
+
+              {/* 共通事項 */}
+              <Reveal className="job-common">
+                <h3>共通事項</h3>
+                <table className="profile recruit-table">
+                  <tbody>
+                    {common.map((r) => (
+                      <tr key={r.th}>
+                        <th>{r.th}</th>
+                        <td>{r.td}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                <p className="job-note">
+                  ※記載の勤務時間・給与などは目安です。詳細は面談にてご相談のうえ決定します。
+                </p>
+              </Reveal>
+            </>
+          ) : (
+            <Reveal className="recruit-empty">
+              <p className="recruit-empty-title">現在、求人情報はありません</p>
+              <p className="recruit-empty-text">
+                たくさんのご関心をありがとうございます。次の募集開始まで今しばらくお待ちください。
+                「見学だけでも」というご相談は随時歓迎しておりますので、お気軽にお問い合わせください。
+              </p>
+              <Link href="/#contact" className="btn btn-ghost">
+                お問い合わせはこちら →
+              </Link>
+            </Reveal>
+          )}
         </div>
       </section>
 
