@@ -62,16 +62,17 @@ header{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.82);backdrop-f
 /* 背景スライドショー（ゆっくりズームでクロスフェード） */
 .hero-slides{position:absolute;inset:0;z-index:0;overflow:hidden}
 .hero-slide{position:absolute;inset:0;background-size:cover;background-position:center;
-  opacity:0;will-change:opacity,transform;animation:heroSlide 21s infinite;filter:brightness(1.16)}
-.hero-slide.s1{background-image:url(/hero-bg.jpg);animation-delay:0s}
-.hero-slide.s2{background-image:url(/craft.jpg);animation-delay:7s}
-.hero-slide.s3{background-image:url(/greeting.jpg);animation-delay:14s}
+  opacity:0;will-change:opacity,transform;animation:heroSlide 24s infinite;filter:brightness(1.14)}
+.hero-slide.s1{background-image:url(/shop-interior1.jpg);animation-delay:0s}
+.hero-slide.s2{background-image:url(/equip-welder.jpg);animation-delay:6s}
+.hero-slide.s3{background-image:url(/equip-table.jpg);animation-delay:12s}
+.hero-slide.s4{background-image:url(/shop-interior2.jpg);animation-delay:18s}
 @keyframes heroSlide{
-  0%{opacity:0;transform:scale(1.04)}
-  4%{opacity:1}
-  28%{opacity:1}
-  33%{opacity:0;transform:scale(1.10)}
-  100%{opacity:0;transform:scale(1.10)}
+  0%{opacity:0;transform:scale(1.05)}
+  3%{opacity:1}
+  22%{opacity:1}
+  25%{opacity:0;transform:scale(1.11)}
+  100%{opacity:0;transform:scale(1.11)}
 }
 /* スクリム（写真の上・文字の下） */
 .hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
@@ -92,7 +93,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.82);backdrop-f
 @media(prefers-reduced-motion:reduce){
   .hero-slide{animation:none}
   .hero-slide.s1{opacity:1}
-  .hero-slide.s2,.hero-slide.s3{opacity:0}
+  .hero-slide.s2,.hero-slide.s3,.hero-slide.s4{opacity:0}
   .hero-copy>*,.hero-portrait{animation:none;opacity:1}
 }
 @keyframes rise{0%{transform:translateY(40px) scale(.6);opacity:0}15%{opacity:1}100%{transform:translateY(-260px) scale(0);opacity:0}}

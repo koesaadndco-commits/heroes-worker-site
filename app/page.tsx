@@ -54,6 +54,7 @@ export default function Home() {
           <div className="hero-slide s1" />
           <div className="hero-slide s2" />
           <div className="hero-slide s3" />
+          <div className="hero-slide s4" />
         </div>
         <Sparks />
         <div className="wrap hero-grid">
