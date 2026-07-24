@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import WorksGallery from "@/components/WorksGallery";
 
 export const metadata: Metadata = {
   title: "施工事例",
@@ -29,7 +28,17 @@ export default function WorksPage() {
       </div>
 
       <div className="wrap" style={{ paddingBottom: 40 }}>
-        <WorksGallery />
+        <div className="prep-note">
+          <p className="prep-title">施工事例は現在調整中です</p>
+          <p className="prep-text">
+            写真とコメントを準備しています。公開まで今しばらくお待ちください。
+            <br />
+            ご相談・お見積もりは随時受け付けておりますので、お気軽にお問い合わせください。
+          </p>
+          <Link href="/#contact" className="btn btn-ghost">
+            お問い合わせはこちら →
+          </Link>
+        </div>
       </div>
 
       <section>

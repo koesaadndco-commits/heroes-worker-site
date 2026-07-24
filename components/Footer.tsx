@@ -12,8 +12,9 @@ export default function Footer() {
               <img src="/logo.png" alt="Heroes Worker" />
             </Link>
             <p>
-              {site.tagline}溶接・金属加工のことなら Heroes Worker
-              におまかせください。
+              {site.tagline}溶接・金属加工のことなら
+              <br />
+              Heroes Worker におまかせください。
             </p>
           </div>
           <div className="foot-cols">

@@ -28,10 +28,6 @@ const stats = [
   { v: "3", small: "種", l: "対応溶接工法" },
 ];
 
-const teaser = [
-  "製缶", "ステンレス溶接", "架台製作", "アルミ溶接", "オーダー什器", "現場補修",
-];
-
 const flow = [
   { title: "お問い合わせ", desc: "フォーム・電話・メールでご相談ください。図面や写真があるとスムーズです。" },
   { title: "お見積もり", desc: "内容を確認し、無料でお見積もりをご提示します。" },
@@ -197,20 +193,12 @@ export default function Home() {
           <Reveal className="section-head">
             <span className="kicker">Works</span>
             <h2>施工事例</h2>
-            <p>これまでに手がけた製作・溶接の事例です。</p>
           </Reveal>
-          <Reveal className="works">
-            {teaser.map((t, i) => (
-              <div className="work" key={t}>
-                施工写真{i + 1}
-                <span className="badge">{t}</span>
-              </div>
-            ))}
-          </Reveal>
-          <Reveal style={{ textAlign: "center", marginTop: 40 }}>
-            <Link href="/works" className="btn btn-ghost">
-              施工事例をもっと見る →
-            </Link>
+          <Reveal className="prep-note">
+            <p className="prep-title">施工事例は現在調整中です</p>
+            <p className="prep-text">
+              写真とコメントを準備しています。今しばらくお待ちください。
+            </p>
           </Reveal>
         </div>
       </section>
