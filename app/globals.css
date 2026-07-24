@@ -83,7 +83,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.82);backdrop-f
     linear-gradient(90deg,rgba(10,10,10,.62),rgba(10,10,10,.22) 52%,rgba(10,10,10,0) 82%),
     linear-gradient(180deg,rgba(14,13,12,.18),rgba(12,11,10,.42)),
     radial-gradient(900px 500px at 50% -5%,rgba(255,122,24,.16),transparent 60%)}
-.spark{position:absolute;z-index:2;width:3px;height:3px;border-radius:50%;background:var(--ember);box-shadow:0 0 12px var(--orange),0 0 4px #fff;opacity:0;animation:rise 6s linear infinite}
+.spark{position:absolute;z-index:2;width:5px;height:5px;border-radius:50%;background:var(--ember);box-shadow:0 0 18px 3px var(--orange),0 0 7px 1px #fff;opacity:0;animation:rise 6s linear infinite}
 /* ヒーロー要素のフワッと表示 */
 @keyframes heroUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
 .hero-copy>*{opacity:0;animation:heroUp .85s cubic-bezier(.2,.7,.2,1) forwards}
@@ -99,7 +99,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.82);backdrop-f
   .hero-slide.s2,.hero-slide.s3,.hero-slide.s4,.hero-slide.s5,.hero-slide.s6{opacity:0}
   .hero-copy>*,.hero-portrait{animation:none;opacity:1}
 }
-@keyframes rise{0%{transform:translateY(40px) scale(.6);opacity:0}15%{opacity:1}100%{transform:translateY(-260px) scale(0);opacity:0}}
+@keyframes rise{0%{transform:translateY(50px) scale(.5);opacity:0}12%{opacity:1}72%{opacity:1}100%{transform:translateY(-340px) scale(0);opacity:0}}
 .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:12px;align-items:center;position:relative;z-index:3;overflow:visible}
 .hero-copy{text-align:center;position:relative;z-index:3}
 .hero-logo{width:min(360px,78%);margin:0 auto 26px;filter:drop-shadow(0 0 40px rgba(255,122,24,.35))}
