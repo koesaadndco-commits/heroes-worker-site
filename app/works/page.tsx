@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Sparks from "@/components/Sparks";
 
 export const metadata: Metadata = {
   title: "施工事例",
@@ -15,6 +16,7 @@ export default function WorksPage() {
       <Header />
 
       <div className="page-hero">
+        <Sparks />
         <div className="wrap">
           <span className="kicker">Works</span>
           <h1>施工事例</h1>
