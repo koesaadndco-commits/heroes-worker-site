@@ -61,9 +61,11 @@ export default function Home() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img className="hero-logo" src="/logo.png" alt="Heroes Worker ロゴ" />
             <h1>
-              溶接職人としての<span className="hl">誇り</span>と<span className="hl">プライド</span>、確かな技術で<span className="hl">価値を創造</span>。
+              <span className="hl">16歳</span>から磨き続けてきた技術。
               <br />
-              最高品質でお渡しするため、<span className="hl">一切の妥協無し</span>。
+              一朝一夕では築けない経験が、<span className="hl">品質の違い</span>を生む。
+              <br />
+              お客様の困りごとに寄り添い、<span className="hl">最適な一手</span>をご提案します。
             </h1>
             <p className="lead">
               Heroes Worker（ヒーローズ ワーカー）は、
@@ -118,11 +120,11 @@ export default function Home() {
             <span className="kicker">Craftsmanship</span>
             <h2>職人の誇りとプライド</h2>
             <p>
-              16歳から磨き続けてきた技術。
+              溶接職人としての<span className="hl">誇り</span>と
+              <span className="hl">プライド</span>、確かな技術で
+              <span className="hl">価値を創造</span>。
               <br />
-              一朝一夕では築けない経験が、品質の違いを生む。
-              <br />
-              お客様の困りごとに寄り添い、最適な一手をご提案します。
+              最高品質でお渡しするため、<span className="hl">一切の妥協無し</span>。
             </p>
           </Reveal>
           <Reveal className="media-photo faded-photo">

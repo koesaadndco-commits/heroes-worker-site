@@ -202,6 +202,7 @@ table.profile th{width:32%;color:var(--ink-soft);font-weight:700;white-space:now
 .media-text .kicker{font-family:var(--font-oswald),sans-serif;font-size:14px;font-weight:700;letter-spacing:.22em;color:var(--orange);text-transform:uppercase}
 .media-text h2{font-size:clamp(24px,3.4vw,34px);font-weight:900;margin:10px 0 18px;line-height:1.4}
 .media-text p{color:var(--ink-soft);font-size:16px;line-height:2.0}
+.media-text p .hl{color:var(--orange);font-weight:700}
 .media-photo{position:relative}
 .media-photo img{width:100%;height:auto;display:block}
 .greeting-name{margin-top:22px;font-weight:900;font-size:17px;color:var(--ink);letter-spacing:.04em}
