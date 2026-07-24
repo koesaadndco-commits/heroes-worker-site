@@ -61,8 +61,10 @@ header{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.82);backdrop-f
   background:linear-gradient(180deg,#141210,#0d0c0b)}
 /* 背景スライドショー（ゆっくりズームでクロスフェード） */
 .hero-slides{position:absolute;inset:0;z-index:0;overflow:hidden;
-  -webkit-mask-image:linear-gradient(to bottom,#000 0,#000 40%,rgba(0,0,0,0) 76%);
-  mask-image:linear-gradient(to bottom,#000 0,#000 40%,rgba(0,0,0,0) 76%)}
+  -webkit-mask-image:linear-gradient(to right,#000 0,#000 40%,rgba(0,0,0,0) 62%),linear-gradient(to bottom,#000 0,#000 62%,rgba(0,0,0,0) 94%);
+  -webkit-mask-composite:source-in;
+  mask-image:linear-gradient(to right,#000 0,#000 40%,rgba(0,0,0,0) 62%),linear-gradient(to bottom,#000 0,#000 62%,rgba(0,0,0,0) 94%);
+  mask-composite:intersect}
 .hero-slide{position:absolute;inset:0;background-size:cover;background-position:center;
   opacity:0;will-change:opacity,transform;animation:heroSlide 30s infinite;filter:brightness(1.14) blur(3px)}
 /* 火花シーン（小さい画像なので強めにぼかして光として活かす） */
@@ -136,6 +138,11 @@ header{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.82);backdrop-f
   .hero-actions{justify-content:center}
   .hero-portrait{order:-1;margin-left:0}
   .hero-portrait img{width:auto;max-width:80%;max-height:52vh}
+  .hero-slides{
+    -webkit-mask-image:linear-gradient(to bottom,#000 0,#000 42%,rgba(0,0,0,0) 78%);
+    -webkit-mask-composite:source-over;
+    mask-image:linear-gradient(to bottom,#000 0,#000 42%,rgba(0,0,0,0) 78%);
+    mask-composite:add}
 }
 
 /* Section common */
