@@ -52,7 +52,8 @@ export default function Footer() {
           </div>
         </div>
         <div className="foot-bottom">
-          © {new Date().getFullYear()} {site.name}. All Rights Reserved.
+          <span>© {new Date().getFullYear()} {site.name}. All Rights Reserved.</span>
+          <span className="foot-credit">Produced by <b>KOESA CO.,LTD.</b></span>
         </div>
       </div>
     </footer>
