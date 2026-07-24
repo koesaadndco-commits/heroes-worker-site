@@ -63,9 +63,13 @@ export default function Home() {
             <h1>
               <span className="hl">16歳</span>から磨き続けてきた技術。
               <br />
-              一朝一夕では築けない経験が、<span className="hl">品質の違い</span>を生む。
+              一朝一夕では築けない経験が、
               <br />
-              お客様の困りごとに寄り添い、<span className="hl">最適な一手</span>をご提案します。
+              <span className="hl">品質の違い</span>を生む。
+              <br />
+              お客様の困りごとに寄り添い、
+              <br />
+              <span className="hl">最適な一手</span>をご提案します。
             </h1>
             <p className="lead">
               Heroes Worker（ヒーローズ ワーカー）は、
