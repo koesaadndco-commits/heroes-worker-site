@@ -55,6 +55,8 @@ export default function Home() {
           <div className="hero-slide s2" />
           <div className="hero-slide s3" />
           <div className="hero-slide s4" />
+          <div className="hero-slide s5" />
+          <div className="hero-slide s6" />
         </div>
         <Sparks />
         <div className="wrap hero-grid">
@@ -62,14 +64,17 @@ export default function Home() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img className="hero-logo" src="/logo.png" alt="Heroes Worker ロゴ" />
             <h1>
-              溶接職人としての<span className="hl">誇り</span>と
-              <span className="hl">プライド</span>を持ち、
-              <br />
-              確かな技術で<span className="hl">価値創造</span>。
+              溶接職人としての<span className="hl">誇り</span>と<span className="hl">プライド</span>、確かな技術で<span className="hl">価値を創造</span>。
               <br />
               最高品質でお渡しするため、<span className="hl">一切の妥協無し</span>。
             </h1>
-            <p className="lead">{site.description}</p>
+            <p className="lead">
+              Heroes Worker（ヒーローズ ワーカー）は、
+              <br />
+              TIG・MIG・アーク溶接から金属加工・製缶まで対応する溶接のプロ集団。
+              <br />
+              一品物から量産まで、確かな技術でつくりたいをカタチにします。
+            </p>
             <div className="hero-actions">
               <Link href="/#contact" className="btn btn-primary">
                 無料で見積もり依頼 →
