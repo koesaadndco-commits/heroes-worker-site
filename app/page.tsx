@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import Sparks from "@/components/Sparks";
 import Reveal from "@/components/Reveal";
 import ContactForm from "@/components/ContactForm";
+import InstagramFeed from "@/components/InstagramFeed";
 import { site } from "@/lib/site";
 
 const services = [
@@ -194,12 +195,7 @@ export default function Home() {
             <span className="kicker">Works</span>
             <h2>施工事例</h2>
           </Reveal>
-          <Reveal className="prep-note">
-            <p className="prep-title">施工事例は現在調整中です</p>
-            <p className="prep-text">
-              写真とコメントを準備しています。今しばらくお待ちください。
-            </p>
-          </Reveal>
+          <InstagramFeed />
         </div>
       </section>
 
