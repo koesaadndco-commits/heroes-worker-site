@@ -121,7 +121,11 @@ export default function Home() {
             <span className="kicker">Craftsmanship</span>
             <h2>職人の誇りとプライド</h2>
             <p>
-              一つひとつの溶接に、職人としての誇りとプライドを込めています。見えない部分こそ丁寧に。お客様に安心して長くお使いいただける仕上がりをお届けします。
+              16歳から磨き続けてきた溶接技術。
+              <br />
+              これまで積み重ねた経験が、品質の違いを生む。
+              <br />
+              お客様の困りごとを、技術力で解決します。
             </p>
           </Reveal>
           <Reveal className="media-photo faded-photo">
