@@ -117,11 +117,11 @@ export default function Home() {
             <span className="kicker">Craftsmanship</span>
             <h2>職人の誇りとプライド</h2>
             <p>
-              16歳から磨き続けてきた溶接技術。
+              16歳から磨き続けてきた技術。
               <br />
-              これまで積み重ねた経験が、品質の違いを生む。
+              一朝一夕では築けない経験が、品質の違いを生む。
               <br />
-              お客様の困りごとを、技術力で解決します。
+              お客様の困りごとに寄り添い、最適な一手をご提案します。
             </p>
           </Reveal>
           <Reveal className="media-photo faded-photo">
