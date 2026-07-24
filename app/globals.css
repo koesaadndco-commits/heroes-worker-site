@@ -62,17 +62,20 @@ header{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.82);backdrop-f
 /* 背景スライドショー（ゆっくりズームでクロスフェード） */
 .hero-slides{position:absolute;inset:0;z-index:0;overflow:hidden}
 .hero-slide{position:absolute;inset:0;background-size:cover;background-position:center;
-  opacity:0;will-change:opacity,transform;animation:heroSlide 24s infinite;filter:brightness(1.14)}
-.hero-slide.s1{background-image:url(/shop-interior1.jpg);animation-delay:0s}
-.hero-slide.s2{background-image:url(/equip-welder.jpg);animation-delay:6s}
-.hero-slide.s3{background-image:url(/equip-table.jpg);animation-delay:12s}
-.hero-slide.s4{background-image:url(/shop-interior2.jpg);animation-delay:18s}
+  opacity:0;will-change:opacity,transform;animation:heroSlide 30s infinite;filter:brightness(1.14) blur(3px)}
+/* 火花シーン（小さい画像なので強めにぼかして光として活かす） */
+.hero-slide.s1{background-image:url(/weld3.jpg);animation-delay:0s;filter:brightness(1.2) blur(9px)}
+.hero-slide.s2{background-image:url(/shop-interior1.jpg);animation-delay:5s}
+.hero-slide.s3{background-image:url(/weld2.jpg);animation-delay:10s;filter:brightness(1.2) blur(9px)}
+.hero-slide.s4{background-image:url(/equip-welder.jpg);animation-delay:15s}
+.hero-slide.s5{background-image:url(/weld4.jpg);animation-delay:20s;filter:brightness(1.22) blur(9px)}
+.hero-slide.s6{background-image:url(/weld1.jpg);animation-delay:25s;filter:brightness(1.2) blur(9px)}
 @keyframes heroSlide{
   0%{opacity:0;transform:scale(1.05)}
-  3%{opacity:1}
-  22%{opacity:1}
-  25%{opacity:0;transform:scale(1.11)}
-  100%{opacity:0;transform:scale(1.11)}
+  2.5%{opacity:1}
+  14%{opacity:1}
+  17%{opacity:0;transform:scale(1.10)}
+  100%{opacity:0;transform:scale(1.10)}
 }
 /* スクリム（写真の上・文字の下） */
 .hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
@@ -93,14 +96,14 @@ header{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.82);backdrop-f
 @media(prefers-reduced-motion:reduce){
   .hero-slide{animation:none}
   .hero-slide.s1{opacity:1}
-  .hero-slide.s2,.hero-slide.s3,.hero-slide.s4{opacity:0}
+  .hero-slide.s2,.hero-slide.s3,.hero-slide.s4,.hero-slide.s5,.hero-slide.s6{opacity:0}
   .hero-copy>*,.hero-portrait{animation:none;opacity:1}
 }
 @keyframes rise{0%{transform:translateY(40px) scale(.6);opacity:0}15%{opacity:1}100%{transform:translateY(-260px) scale(0);opacity:0}}
 .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:12px;align-items:center;position:relative;z-index:3;overflow:visible}
 .hero-copy{text-align:center;position:relative;z-index:3}
 .hero-logo{width:min(360px,78%);margin:0 auto 26px;filter:drop-shadow(0 0 40px rgba(255,122,24,.35))}
-.hero h1{font-size:clamp(24px,3.7vw,42px);line-height:1.6;font-weight:900;position:relative;z-index:3;text-shadow:0 2px 18px rgba(0,0,0,.6)}
+.hero h1{font-size:clamp(21px,3.1vw,33px);line-height:1.65;font-weight:900;position:relative;z-index:3;text-shadow:0 2px 18px rgba(0,0,0,.6);word-break:auto-phrase}
 .hero h1 .hl{color:var(--orange)}
 .hero p.lead{margin:22px auto 34px;font-size:16.5px;color:#f2efec;max-width:34em;text-shadow:0 1px 10px rgba(0,0,0,.6)}
 .hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
