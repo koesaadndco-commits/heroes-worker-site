@@ -38,5 +38,6 @@ export const nav = [
   { href: "/blog", label: "ブログ" },
   { href: "/#flow", label: "ご依頼の流れ" },
   { href: "/#company", label: "会社概要" },
+  { href: "/recruit", label: "採用情報" },
   { href: "/#contact", label: "お問い合わせ" },
 ];
