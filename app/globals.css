@@ -72,20 +72,18 @@ header .wrap{max-width:1300px}
   mask-image:linear-gradient(to right,#000 0,#000 18%,rgba(0,0,0,0) 34%),linear-gradient(to bottom,#000 0,#000 62%,rgba(0,0,0,0) 94%);
   mask-composite:intersect}
 .hero-slide{position:absolute;inset:0;background-size:cover;background-position:center;
-  opacity:0;will-change:opacity,transform;animation:heroSlide 30s infinite;filter:brightness(1.14) blur(3px)}
-/* 火花シーン（小さい画像なので強めにぼかして光として活かす） */
-.hero-slide.s1{background-image:url(/weld3.jpg);animation-delay:0s;filter:brightness(1.2) blur(9px)}
-.hero-slide.s2{background-image:url(/shop-interior1.jpg);animation-delay:5s}
-.hero-slide.s3{background-image:url(/weld2.jpg);animation-delay:10s;filter:brightness(1.2) blur(9px)}
-.hero-slide.s4{background-image:url(/equip-welder.jpg);animation-delay:15s}
-.hero-slide.s5{background-image:url(/weld4.jpg);animation-delay:20s;filter:brightness(1.22) blur(9px)}
-.hero-slide.s6{background-image:url(/weld1.jpg);animation-delay:25s;filter:brightness(1.2) blur(9px)}
+  opacity:0;will-change:opacity,transform;animation:heroSlide 24s infinite;filter:brightness(1.2) blur(9px)}
+/* 溶接・火花シーン（小さい画像なので強めにぼかして光として活かす） */
+.hero-slide.s1{background-image:url(/weld1.jpg);animation-delay:0s}
+.hero-slide.s2{background-image:url(/weld2.jpg);animation-delay:6s}
+.hero-slide.s3{background-image:url(/weld3.jpg);animation-delay:12s}
+.hero-slide.s4{background-image:url(/weld4.jpg);animation-delay:18s}
 @keyframes heroSlide{
-  0%{opacity:0;transform:scale(1.05)}
-  2.5%{opacity:1}
-  14%{opacity:1}
-  17%{opacity:0;transform:scale(1.10)}
-  100%{opacity:0;transform:scale(1.10)}
+  0%{opacity:0;transform:scale(1.06)}
+  3%{opacity:1}
+  22%{opacity:1}
+  25%{opacity:0;transform:scale(1.12)}
+  100%{opacity:0;transform:scale(1.12)}
 }
 /* スクリム（写真の上・文字の下） */
 .hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
@@ -106,7 +104,7 @@ header .wrap{max-width:1300px}
 @media(prefers-reduced-motion:reduce){
   .hero-slide{animation:none}
   .hero-slide.s1{opacity:1}
-  .hero-slide.s2,.hero-slide.s3,.hero-slide.s4,.hero-slide.s5,.hero-slide.s6{opacity:0}
+  .hero-slide.s2,.hero-slide.s3,.hero-slide.s4{opacity:0}
   .hero-copy>*,.hero-portrait{animation:none;opacity:1}
 }
 @keyframes rise{0%{transform:translateY(50px) scale(.5);opacity:0}12%{opacity:1}72%{opacity:1}100%{transform:translateY(-340px) scale(0);opacity:0}}

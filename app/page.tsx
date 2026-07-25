@@ -24,7 +24,7 @@ const strengths = [
 
 const stats = [
   { v: "1,200", small: "+", l: "施工実績" },
-  { v: "15", small: "年", l: "溶接ひとすじ" },
+  { v: "25", small: "年", l: "溶接ひとすじ" },
   { v: "最短", small: "翌日", l: "スピード対応" },
   { v: "3", small: "種", l: "対応溶接工法" },
 ];
@@ -52,8 +52,6 @@ export default function Home() {
           <div className="hero-slide s2" />
           <div className="hero-slide s3" />
           <div className="hero-slide s4" />
-          <div className="hero-slide s5" />
-          <div className="hero-slide s6" />
         </div>
         <Sparks />
         <div className="wrap hero-grid">
