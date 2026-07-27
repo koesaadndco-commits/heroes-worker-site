@@ -37,8 +37,8 @@ const wanted = [
   "チームで協力しながら成長したい方",
 ];
 
-// 募集状況：求人がない期間は false にすると「現在、求人情報はありません」と表示されます
-const isRecruiting = true;
+// 募集状況：調整中の期間は false にすると「採用情報は現在調整中です」と表示されます
+const isRecruiting = false;
 
 // 全雇用形態に共通の情報
 const common = [
@@ -98,7 +98,7 @@ export default function Recruit() {
             <span className="kicker">Recruit</span>
             <h2>採用情報</h2>
             <p>
-              溶接・金属加工を通じて、一緒に「ものづくり」を楽しむ仲間を募集しています。
+              溶接・金属加工を通じて、一緒に「ものづくり」を楽しむ仲間を探しています。
             </p>
           </Reveal>
         </div>
@@ -214,9 +214,10 @@ export default function Recruit() {
             </>
           ) : (
             <Reveal className="recruit-empty">
-              <p className="recruit-empty-title">現在、求人情報はありません</p>
+              <p className="recruit-empty-title">採用情報は現在調整中です</p>
               <p className="recruit-empty-text">
-                たくさんのご関心をありがとうございます。次の募集開始まで今しばらくお待ちください。
+                たくさんのご関心をありがとうございます。ただいま募集内容を調整しております。
+                募集を再開する際は、こちらのページでお知らせいたします。
                 「見学だけでも」というご相談は随時歓迎しておりますので、お気軽にお問い合わせください。
               </p>
               <Link href="/#contact" className="btn btn-ghost">
