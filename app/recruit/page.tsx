@@ -5,6 +5,10 @@ import Footer from "@/components/Footer";
 import Reveal from "@/components/Reveal";
 import Sparks from "@/components/Sparks";
 import { site } from "@/lib/site";
+import { getRecruitState } from "@/lib/store";
+
+// 管理コンソールの切替を即時反映させるため、都度最新を取得
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: `採用情報 | ${site.name}`,
@@ -37,8 +41,9 @@ const wanted = [
   "チームで協力しながら成長したい方",
 ];
 
-// 募集状況：調整中の期間は false にすると「採用情報は現在調整中です」と表示されます
-const isRecruiting = false;
+// 募集状況の既定値。管理コンソール（/admin）で切り替えると、そちらが優先されます。
+// KV 未設定時はこの既定値が使われます（false = 調整中）。
+const DEFAULT_RECRUITING = false;
 
 // 全雇用形態に共通の情報
 const common = [
@@ -86,7 +91,10 @@ const jobs = [
   },
 ];
 
-export default function Recruit() {
+export default async function Recruit() {
+  const state = await getRecruitState();
+  const isRecruiting = state ? state.isRecruiting : DEFAULT_RECRUITING;
+
   return (
     <>
       <Header />

@@ -1,8 +1,23 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { site } from "@/lib/site";
+import { addInquiry } from "@/lib/store";
 
 export const runtime = "nodejs";
+
+// 管理コンソールで履歴を見られるよう、届いた内容を保存（KV 未設定なら何もしない）。
+async function saveInquiry(fields: {
+  name: string;
+  email: string;
+  tel: string;
+  message: string;
+}) {
+  try {
+    await addInquiry({ ...fields, at: new Date().toISOString() });
+  } catch {
+    /* 保存に失敗してもメール送信は妨げない */
+  }
+}
 
 function escapeHtml(s: string) {
   return s
@@ -43,6 +58,7 @@ export async function POST(req: Request) {
       tel,
       message,
     });
+    await saveInquiry({ name, email, tel, message });
     return NextResponse.json({
       ok: true,
       note: "メール送信は未設定です（RESEND_API_KEY を設定すると実送信されます）。",
@@ -72,6 +88,7 @@ export async function POST(req: Request) {
         { status: 502 }
       );
     }
+    await saveInquiry({ name, email, tel, message });
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error("[contact] exception:", err);
