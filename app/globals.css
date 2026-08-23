@@ -471,3 +471,6 @@ footer{background:#060606;color:#a3a3a3;padding:56px 0 28px;border-top:1px solid
 .admin-inq-meta{font-size:13px;color:var(--ink-dim);margin-top:4px}
 .admin-inq-meta a{color:var(--orange)}
 .admin-inq-msg{margin-top:10px;font-size:14px;white-space:pre-wrap;line-height:1.7}
+.admin-siteform{margin-top:16px}
+.admin-form-2col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:560px){.admin-form-2col{grid-template-columns:1fr}}
