@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { site } from "@/lib/site";
+import { getSiteInfo } from "@/lib/siteConfig";
 
-export default function Footer() {
+export default async function Footer() {
+  const info = await getSiteInfo();
   return (
     <footer>
       <div className="wrap">
@@ -30,8 +32,8 @@ export default function Footer() {
             <div className="foot-col">
               <h4>Contact</h4>
               <Link href="/#contact">お問い合わせ</Link>
-              <a href={site.contact.telHref}>{site.contact.tel}</a>
-              <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
+              <a href={info.telHref}>{info.tel}</a>
+              <a href={`mailto:${info.email}`}>{info.email}</a>
             </div>
             <div className="foot-col foot-sns">
               <h4>Instagram</h4>

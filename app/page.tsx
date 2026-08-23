@@ -6,6 +6,10 @@ import Reveal from "@/components/Reveal";
 import ContactForm from "@/components/ContactForm";
 import InstagramFeed from "@/components/InstagramFeed";
 import { site } from "@/lib/site";
+import { getSiteInfo } from "@/lib/siteConfig";
+
+// 会社情報の編集（管理コンソール）を反映するため ISR（30秒ごとに更新）
+export const revalidate = 30;
 
 const services = [
   { ic: "🔥", title: "各種溶接", desc: "TIG・半自動（MIG/MAG）・被覆アーク溶接に対応。鉄・ステンレス・アルミなど、素材に応じた最適な溶接を行います。" },
@@ -36,7 +40,8 @@ const flow = [
   { title: "納品・アフター", desc: "納品後のフォローや補修にも対応します。" },
 ];
 
-export default function Home() {
+export default async function Home() {
+  const info = await getSiteInfo();
   const mapSrc = `https://maps.google.com/maps?q=${encodeURIComponent(
     site.address.mapQuery
   )}&hl=ja&z=16&output=embed`;
@@ -303,10 +308,10 @@ export default function Home() {
                 <tr><th>設立</th><td>{site.company.founded}</td></tr>
                 <tr><th>事業内容</th><td>{site.company.business}</td></tr>
                 <tr><th>対応素材</th><td>{site.company.materials}</td></tr>
-                <tr><th>所在地</th><td>〒{site.address.zip}<br />{site.address.line}</td></tr>
-                <tr><th>電話</th><td>{site.contact.tel}（担当：{site.contact.person}）</td></tr>
-                <tr><th>メール</th><td>{site.contact.email}</td></tr>
-                <tr><th>営業時間</th><td>{site.contact.hours}</td></tr>
+                <tr><th>所在地</th><td>〒{info.zip}<br />{info.addressLine}</td></tr>
+                <tr><th>電話</th><td>{info.tel}（担当：{site.contact.person}）</td></tr>
+                <tr><th>メール</th><td>{info.email}</td></tr>
+                <tr><th>営業時間</th><td>{info.hours}</td></tr>
                 <tr><th>対応エリア</th><td>{site.company.area}</td></tr>
               </tbody>
             </table>
@@ -340,9 +345,9 @@ export default function Home() {
                 <div>
                   <div className="l">お電話（担当：{site.contact.person}）</div>
                   <div className="v">
-                    <a href={site.contact.telHref}>{site.contact.tel}</a>
+                    <a href={info.telHref}>{info.tel}</a>
                   </div>
-                  <div className="l">受付時間 {site.contact.hours}</div>
+                  <div className="l">受付時間 {info.hours}</div>
                 </div>
               </div>
               <div className="info-row">
@@ -350,7 +355,7 @@ export default function Home() {
                 <div>
                   <div className="l">メール</div>
                   <div className="v">
-                    <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
+                    <a href={`mailto:${info.email}`}>{info.email}</a>
                   </div>
                 </div>
               </div>
@@ -358,7 +363,7 @@ export default function Home() {
                 <span className="ic">📍</span>
                 <div>
                   <div className="l">所在地</div>
-                  <div className="v">〒{site.address.zip}<br />{site.address.line}</div>
+                  <div className="v">〒{info.zip}<br />{info.addressLine}</div>
                 </div>
               </div>
               <div className="info-row">

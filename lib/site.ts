@@ -11,7 +11,7 @@ export const site = {
     tel: "090-7081-1130",
     telHref: "tel:09070811130",
     email: "hiroya11300602@gmail.com",
-    hours: "平日 8:00〜18:00（土日応相談）",
+    hours: "平日 9:00〜18:00（土日応相談）",
   },
   social: {
     instagram: "https://www.instagram.com/heroes_worker/",

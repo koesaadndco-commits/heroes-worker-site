@@ -7,6 +7,9 @@ import Reveal from "@/components/Reveal";
 import { posts, getPost } from "@/lib/blog";
 import { site } from "@/lib/site";
 
+// フッターの会社情報（管理コンソール編集）を反映するため ISR
+export const revalidate = 60;
+
 export function generateStaticParams() {
   return posts.map((p) => ({ slug: p.slug }));
 }

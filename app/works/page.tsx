@@ -4,6 +4,9 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Sparks from "@/components/Sparks";
 
+// フッターの会社情報（管理コンソール編集）を反映するため ISR
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   title: "施工事例",
   description:

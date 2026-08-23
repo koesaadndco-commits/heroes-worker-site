@@ -39,14 +39,21 @@ export default function AdminClient() {
   const [inquiries, setInquiries] = useState<Inquiry[]>([]);
   const [loadingData, setLoadingData] = useState(false);
 
+  // サイト基本情報の編集
+  const emptySite = { hours: "", tel: "", email: "", zip: "", addressLine: "" };
+  const [siteVals, setSiteVals] = useState({ ...emptySite });
+  const [savingSite, setSavingSite] = useState(false);
+  const [siteMsg, setSiteMsg] = useState("");
+
   const loadData = useCallback(async () => {
     setLoadingData(true);
     try {
-      const [s, q] = await Promise.all([
+      const [s, q, si] = await Promise.all([
         fetch("/api/admin/state", { cache: "no-store" }),
         fetch("/api/admin/inquiries", { cache: "no-store" }),
+        fetch("/api/admin/site", { cache: "no-store" }),
       ]);
-      if (s.status === 401 || q.status === 401) {
+      if (s.status === 401 || q.status === 401 || si.status === 401) {
         setAuthed(false);
         return;
       }
@@ -59,10 +66,15 @@ export default function AdminClient() {
         const qj = await q.json();
         setInquiries(Array.isArray(qj.inquiries) ? qj.inquiries : []);
       }
+      if (si.ok) {
+        const sij = await si.json();
+        if (sij.values) setSiteVals({ ...emptySite, ...sij.values });
+      }
       setAuthed(true);
     } finally {
       setLoadingData(false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // 初回：ログイン済みか確認
@@ -129,6 +141,27 @@ export default function AdminClient() {
       setSavedMsg(err instanceof Error ? err.message : "保存に失敗しました。");
     } finally {
       setSaving(false);
+    }
+  }
+
+  async function saveSite(e: React.FormEvent) {
+    e.preventDefault();
+    setSavingSite(true);
+    setSiteMsg("");
+    try {
+      const res = await fetch("/api/admin/site", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(siteVals),
+      });
+      const json = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(json.error || "保存に失敗しました。");
+      if (json.values) setSiteVals({ ...emptySite, ...json.values });
+      setSiteMsg("保存しました。サイトに反映されます（数十秒で反映）。");
+    } catch (err) {
+      setSiteMsg(err instanceof Error ? err.message : "保存に失敗しました。");
+    } finally {
+      setSavingSite(false);
     }
   }
 
@@ -222,6 +255,75 @@ export default function AdminClient() {
           </strong>
         </p>
         {savedMsg && <p className="admin-saved">{savedMsg}</p>}
+      </section>
+
+      {/* サイト基本情報の編集 */}
+      <section className="admin-card">
+        <h2 className="admin-h2">サイト基本情報</h2>
+        <p className="admin-muted">
+          営業時間・電話・メール・住所を編集できます。空欄で保存すると、その項目は初期設定に戻ります。
+        </p>
+        <form onSubmit={saveSite} className="admin-siteform">
+          <div className="form-field">
+            <label>営業時間</label>
+            <input
+              type="text"
+              value={siteVals.hours}
+              onChange={(e) => setSiteVals({ ...siteVals, hours: e.target.value })}
+              placeholder="平日 9:00〜18:00（土日応相談）"
+            />
+          </div>
+          <div className="admin-form-2col">
+            <div className="form-field">
+              <label>電話番号</label>
+              <input
+                type="text"
+                value={siteVals.tel}
+                onChange={(e) => setSiteVals({ ...siteVals, tel: e.target.value })}
+                placeholder="090-7081-1130"
+              />
+            </div>
+            <div className="form-field">
+              <label>メールアドレス</label>
+              <input
+                type="text"
+                value={siteVals.email}
+                onChange={(e) => setSiteVals({ ...siteVals, email: e.target.value })}
+                placeholder="example@example.com"
+              />
+            </div>
+          </div>
+          <div className="admin-form-2col">
+            <div className="form-field">
+              <label>郵便番号</label>
+              <input
+                type="text"
+                value={siteVals.zip}
+                onChange={(e) => setSiteVals({ ...siteVals, zip: e.target.value })}
+                placeholder="923-0004"
+              />
+            </div>
+            <div className="form-field">
+              <label>住所</label>
+              <input
+                type="text"
+                value={siteVals.addressLine}
+                onChange={(e) =>
+                  setSiteVals({ ...siteVals, addressLine: e.target.value })
+                }
+                placeholder="石川県小松市長崎町4丁目77"
+              />
+            </div>
+          </div>
+          <button
+            type="submit"
+            className="btn btn-primary"
+            disabled={savingSite || !storeConfigured}
+          >
+            {savingSite ? "保存中…" : "保存する"}
+          </button>
+          {siteMsg && <p className="admin-saved">{siteMsg}</p>}
+        </form>
       </section>
 
       {/* お問い合わせ一覧 */}

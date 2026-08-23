@@ -5,10 +5,11 @@ import Footer from "@/components/Footer";
 import Reveal from "@/components/Reveal";
 import Sparks from "@/components/Sparks";
 import { site } from "@/lib/site";
-import { getRecruitState } from "@/lib/store";
+import { getRecruitStateCached } from "@/lib/store";
+import { getSiteInfo } from "@/lib/siteConfig";
 
-// 管理コンソールの切替を即時反映させるため、都度最新を取得
-export const dynamic = "force-dynamic";
+// 管理コンソールの切替を反映するため ISR（30秒ごとに更新）
+export const revalidate = 30;
 
 export const metadata: Metadata = {
   title: `採用情報 | ${site.name}`,
@@ -92,8 +93,9 @@ const jobs = [
 ];
 
 export default async function Recruit() {
-  const state = await getRecruitState();
+  const state = await getRecruitStateCached();
   const isRecruiting = state ? state.isRecruiting : DEFAULT_RECRUITING;
+  const info = await getSiteInfo();
 
   return (
     <>
@@ -248,8 +250,8 @@ export default async function Recruit() {
               <Link href="/#contact" className="btn btn-white">
                 応募・お問い合わせ →
               </Link>
-              <a href={site.contact.telHref} className="btn btn-ghost-white">
-                電話で相談 {site.contact.tel}
+              <a href={info.telHref} className="btn btn-ghost-white">
+                電話で相談 {info.tel}
               </a>
             </div>
           </Reveal>
