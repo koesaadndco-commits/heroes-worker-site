@@ -28,6 +28,9 @@ export const metadata: Metadata = {
   },
   description: site.description,
   icons: { icon: "/logo.png" },
+  verification: {
+    google: "Xkelca3-hj-CGrigFJmhN5o22jcNsWV5We8F4El-CtU",
+  },
   openGraph: {
     title: `${site.name}｜溶接・金属加工`,
     description: site.description,
