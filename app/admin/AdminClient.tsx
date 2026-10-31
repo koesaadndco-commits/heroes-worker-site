@@ -221,7 +221,7 @@ export default function AdminClient() {
 
       {!storeConfigured && (
         <div className="admin-msg warn">
-          保存先（KV）が未設定です。切り替えや履歴の保存には Vercel で KV を接続し、再デプロイしてください。
+          保存先（データベース）が未設定です。切り替えや履歴の保存には Supabase を接続し、再デプロイしてください。
         </div>
       )}
 
