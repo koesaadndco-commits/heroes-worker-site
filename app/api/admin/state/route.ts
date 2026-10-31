@@ -5,10 +5,10 @@ import { getRecruitState, setRecruitState, isStoreConfigured } from "@/lib/store
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const DEFAULT_RECRUITING = false; // KV 未設定時の既定（調整中）
+const DEFAULT_RECRUITING = false; // 保存先未設定時の既定（調整中）
 
 export async function GET(req: NextRequest) {
-  if (!isAuthed(req)) {
+  if (!(await isAuthed(req))) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   }
   const storeConfigured = isStoreConfigured();
@@ -20,12 +20,12 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
-  if (!isAuthed(req)) {
+  if (!(await isAuthed(req))) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   }
   if (!isStoreConfigured()) {
     return NextResponse.json(
-      { error: "保存先（KV）が未設定のため保存できません。" },
+      { error: "保存先（データベース）が未設定のため保存できません。" },
       { status: 503 }
     );
   }

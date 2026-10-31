@@ -5,7 +5,7 @@ import { addInquiry } from "@/lib/store";
 
 export const runtime = "nodejs";
 
-// 管理コンソールで履歴を見られるよう、届いた内容を保存（KV 未設定なら何もしない）。
+// 管理コンソールで履歴を見られるよう、届いた内容を保存（保存先未設定なら何もしない）。
 async function saveInquiry(fields: {
   name: string;
   email: string;
@@ -13,7 +13,7 @@ async function saveInquiry(fields: {
   message: string;
 }) {
   try {
-    await addInquiry({ ...fields, at: new Date().toISOString() });
+    await addInquiry(fields);
   } catch {
     /* 保存に失敗してもメール送信は妨げない */
   }

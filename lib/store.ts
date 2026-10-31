@@ -1,92 +1,83 @@
-// 簡易データストア（Upstash / Vercel KV の REST API を直接叩く実装）。
-// 追加パッケージ不要。KV 未設定でもサイトが壊れないよう、その場合は null / 既定値を返す。
+// データストア：Supabase（PostgREST）を fetch で直接利用。追加パッケージ不要で
+// Cloudflare Workers / Vercel の両方で動く。Service Role Key はサーバー側のみで使用。
+// 未設定時はサイトが壊れないよう null / 既定値を返す。
 
 function creds() {
-  const url =
-    process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
-  const token =
-    process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
-  return url && token ? { url, token } : null;
+  const url = process.env.SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  return url && key ? { url: url.replace(/\/$/, ""), key } : null;
 }
 
-/** KV（保存先）が設定済みか。管理画面の案内表示に使用。 */
+/** 保存先（Supabase）が設定済みか。 */
 export function isStoreConfigured(): boolean {
   return !!creds();
 }
 
-// 管理系（書き込み・最新取得）：常に最新を読む
-async function cmd(args: (string | number)[]): Promise<unknown> {
+type SbInit = RequestInit & { next?: { revalidate: number } };
+
+async function sb(path: string, init: SbInit = {}, revalidate?: number): Promise<Response | null> {
   const c = creds();
   if (!c) return null;
+  const headers: Record<string, string> = {
+    apikey: c.key,
+    Authorization: `Bearer ${c.key}`,
+    "Content-Type": "application/json",
+    ...(init.headers as Record<string, string> | undefined),
+  };
+  const opts: SbInit = { ...init, headers };
+  if (revalidate != null) opts.next = { revalidate };
+  else opts.cache = "no-store";
   try {
-    const res = await fetch(c.url, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${c.token}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(args),
-      cache: "no-store",
-    });
-    if (!res.ok) return null;
-    const json = (await res.json()) as { result?: unknown };
-    return json.result ?? null;
+    const res = await fetch(`${c.url}/rest/v1/${path}`, opts);
+    return res.ok ? res : null;
   } catch {
     return null;
   }
 }
 
-// 公開ページ表示用：ISR でキャッシュ（revalidate 秒ごとに更新）。GET なので Next がキャッシュ可能。
-async function readKeyCached(key: string, revalidate: number): Promise<string | null> {
-  const c = creds();
-  if (!c) return null;
+// ---- 設定テーブル（key/value）。recruit 状態と site 上書きをここに保存 ----
+async function getSetting<T>(key: string, revalidate?: number): Promise<T | null> {
+  const res = await sb(
+    `hw_settings?key=eq.${encodeURIComponent(key)}&select=value`,
+    {},
+    revalidate
+  );
+  if (!res) return null;
   try {
-    const res = await fetch(`${c.url}/get/${encodeURIComponent(key)}`, {
-      headers: { Authorization: `Bearer ${c.token}` },
-      next: { revalidate },
-    });
-    if (!res.ok) return null;
-    const json = (await res.json()) as { result?: unknown };
-    return typeof json.result === "string" ? json.result : null;
+    const rows = (await res.json()) as { value: T }[];
+    return rows.length ? rows[0].value : null;
   } catch {
     return null;
   }
+}
+
+async function setSetting(key: string, value: unknown): Promise<boolean> {
+  const res = await sb("hw_settings?on_conflict=key", {
+    method: "POST",
+    headers: { Prefer: "resolution=merge-duplicates,return=minimal" },
+    body: JSON.stringify({ key, value, updated_at: new Date().toISOString() }),
+  });
+  return !!res;
 }
 
 // ---- 採用ページの募集状態 ----
 export type RecruitState = { isRecruiting: boolean };
 
 export async function getRecruitState(): Promise<RecruitState | null> {
-  const r = await cmd(["GET", "recruit:state"]);
-  if (typeof r !== "string") return null;
-  try {
-    const v = JSON.parse(r) as RecruitState;
-    return { isRecruiting: !!v.isRecruiting };
-  } catch {
-    return null;
-  }
+  const v = await getSetting<RecruitState>("recruit");
+  return v ? { isRecruiting: !!v.isRecruiting } : null;
+}
+
+export async function getRecruitStateCached(revalidate = 30): Promise<RecruitState | null> {
+  const v = await getSetting<RecruitState>("recruit", revalidate);
+  return v ? { isRecruiting: !!v.isRecruiting } : null;
 }
 
 export async function setRecruitState(state: RecruitState): Promise<boolean> {
-  const r = await cmd(["SET", "recruit:state", JSON.stringify(state)]);
-  return r === "OK";
+  return setSetting("recruit", { isRecruiting: !!state.isRecruiting });
 }
 
-// 公開ページ（採用ページ）用：ISR キャッシュ付きで募集状態を取得
-export async function getRecruitStateCached(
-  revalidate = 30
-): Promise<RecruitState | null> {
-  const r = await readKeyCached("recruit:state", revalidate);
-  if (r == null) return null;
-  try {
-    const v = JSON.parse(r) as RecruitState;
-    return { isRecruiting: !!v.isRecruiting };
-  } catch {
-    return null;
-  }
-}
-
-// ---- サイト基本情報の上書き（会社情報の編集） ----
+// ---- サイト基本情報の上書き ----
 export type SiteOverrides = {
   hours?: string;
   tel?: string;
@@ -95,33 +86,16 @@ export type SiteOverrides = {
   addressLine?: string;
 };
 
-const OVERRIDES_KEY = "site:overrides";
-
-function parseOverrides(r: string | null): SiteOverrides | null {
-  if (r == null) return null;
-  try {
-    return JSON.parse(r) as SiteOverrides;
-  } catch {
-    return null;
-  }
-}
-
-/** 管理画面用：常に最新の上書き設定を取得 */
 export async function getOverrides(): Promise<SiteOverrides | null> {
-  const r = await cmd(["GET", OVERRIDES_KEY]);
-  return parseOverrides(typeof r === "string" ? r : null);
+  return getSetting<SiteOverrides>("site_overrides");
 }
 
-/** 公開ページ用：ISR キャッシュ付きで上書き設定を取得 */
-export async function getOverridesCached(
-  revalidate = 60
-): Promise<SiteOverrides | null> {
-  return parseOverrides(await readKeyCached(OVERRIDES_KEY, revalidate));
+export async function getOverridesCached(revalidate = 60): Promise<SiteOverrides | null> {
+  return getSetting<SiteOverrides>("site_overrides", revalidate);
 }
 
 export async function setOverrides(o: SiteOverrides): Promise<boolean> {
-  const r = await cmd(["SET", OVERRIDES_KEY, JSON.stringify(o)]);
-  return r === "OK";
+  return setSetting("site_overrides", o);
 }
 
 // ---- お問い合わせ履歴 ----
@@ -130,26 +104,37 @@ export type Inquiry = {
   email: string;
   tel: string;
   message: string;
-  at: string; // ISO 文字列
+  at: string; // ISO 文字列（created_at から詰め替え）
 };
 
-export async function addInquiry(i: Inquiry): Promise<void> {
-  await cmd(["LPUSH", "inquiries", JSON.stringify(i)]);
-  // 保存件数を上限200件に抑えて無料枠内に収める
-  await cmd(["LTRIM", "inquiries", 0, 199]);
+export async function addInquiry(i: Omit<Inquiry, "at">): Promise<void> {
+  await sb("hw_inquiries", {
+    method: "POST",
+    headers: { Prefer: "return=minimal" },
+    body: JSON.stringify({
+      name: i.name,
+      email: i.email,
+      tel: i.tel,
+      message: i.message,
+    }),
+  });
 }
 
 export async function getInquiries(limit = 100): Promise<Inquiry[]> {
-  const r = await cmd(["LRANGE", "inquiries", 0, limit - 1]);
-  if (!Array.isArray(r)) return [];
-  const out: Inquiry[] = [];
-  for (const x of r) {
-    if (typeof x !== "string") continue;
-    try {
-      out.push(JSON.parse(x) as Inquiry);
-    } catch {
-      /* skip */
-    }
+  const res = await sb(
+    `hw_inquiries?select=name,email,tel,message,created_at&order=created_at.desc&limit=${limit}`
+  );
+  if (!res) return [];
+  try {
+    const rows = (await res.json()) as (Omit<Inquiry, "at"> & { created_at: string })[];
+    return rows.map((r) => ({
+      name: r.name,
+      email: r.email,
+      tel: r.tel,
+      message: r.message,
+      at: r.created_at,
+    }));
+  } catch {
+    return [];
   }
-  return out;
 }

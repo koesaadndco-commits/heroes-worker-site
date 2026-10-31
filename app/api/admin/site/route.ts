@@ -10,7 +10,7 @@ export const dynamic = "force-dynamic";
 const FIELDS: (keyof SiteOverrides)[] = ["hours", "tel", "email", "zip", "addressLine"];
 
 export async function GET(req: NextRequest) {
-  if (!isAuthed(req)) {
+  if (!(await isAuthed(req))) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   }
   // 現在の実効値（既定値＋上書き）をフォーム初期値として返す
@@ -28,12 +28,12 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
-  if (!isAuthed(req)) {
+  if (!(await isAuthed(req))) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   }
   if (!isStoreConfigured()) {
     return NextResponse.json(
-      { error: "保存先（KV）が未設定のため保存できません。" },
+      { error: "保存先（データベース）が未設定のため保存できません。" },
       { status: 503 }
     );
   }

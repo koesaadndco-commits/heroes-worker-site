@@ -6,7 +6,7 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 export async function GET(req: NextRequest) {
-  if (!isAuthed(req)) {
+  if (!(await isAuthed(req))) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   }
   const inquiries = await getInquiries(100);
